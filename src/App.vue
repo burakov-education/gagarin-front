@@ -48,7 +48,7 @@ provide('isAuth', token)
           <RouterLink to="/registration" class="text-sm font-semibold leading-6 text-gray-900">Регистрация</RouterLink>
         </template>
         <template v-else>
-          <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Заказ на Луне</a>
+          <RouterLink to="/order" class="text-sm font-semibold leading-6 text-gray-900">Заказ на Луне</RouterLink>
           <RouterLink to="/gagarin" class="text-sm font-semibold leading-6 text-gray-900">Гагарин</RouterLink>
           <RouterLink to="/mission" class="text-sm font-semibold leading-6 text-gray-900">Миссии</RouterLink>
           <RouterLink to="/space-flight" class="text-sm font-semibold leading-6 text-gray-900">Рейсы</RouterLink>

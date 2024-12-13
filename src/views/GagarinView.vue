@@ -1,6 +1,7 @@
 <script setup>
 import apiFetch from "@/helpers/apiFetch.js";
 import {onMounted, ref} from "vue";
+import Preloader from "@/components/Preloader.vue";
 
 const gagarin = ref(null)
 
@@ -12,6 +13,7 @@ onMounted(async () => {
 </script>
 
 <template>
+  <Preloader v-if="!gagarin" />
   <div class="container mt-10 sm:mx-auto sm:w-full sm:max-w-2xl" v-if="gagarin">
     <div class="px-4 mb-10 sm:px-0 bg-white shadow-xl rounded">
       <div class="flex justify-between w-full items-center p-6">

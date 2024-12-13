@@ -1,9 +1,11 @@
 <script setup>
 import {onMounted, ref} from "vue";
 import apiFetch from "@/helpers/apiFetch.js";
+import Preloader from "@/components/Preloader.vue";
 
 const flights = ref([])
 const modalMessage = ref('')
+const isLoading = ref(false)
 
 const book = async (flightNumber) => {
   const {code, data} = await apiFetch('post', '/book-flight', {
@@ -16,9 +18,13 @@ const book = async (flightNumber) => {
 }
 
 const updateFlights = async () => {
+  isLoading.value = false
+
   const {code, data} = await apiFetch('get', '/space-flights')
 
   flights.value = data.data
+
+  isLoading.value = true
 }
 
 onMounted(async () => {
@@ -32,7 +38,9 @@ onMounted(async () => {
       <RouterLink to="/space-flight/create" class="bg-sky-500 text-white py-2 px-2 rounded shadow-md hover:bg-sky-600 mb-4">
         Добавить рейс
       </RouterLink>
-      <div class="flex gap-2 justify-between p-4" style="flex-wrap: wrap">
+
+      <Preloader v-if="!isLoading" />
+      <div class="flex gap-2 justify-between p-4" style="flex-wrap: wrap" v-if="isLoading">
         <div class="shadow-md rounded w-full p-4" v-for="flight in flights" style="flex-basis: calc(50% - 4px)">
           <h2 class="font-bold">{{ flight.flight_number }}</h2>
           <p>{{ flight.destination }}</p>

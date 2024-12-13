@@ -7,6 +7,8 @@ import MissionView from "@/views/MissionView.vue";
 import SpaceFlightView from "@/views/SpaceFlightView.vue";
 import SearchView from "@/views/SearchView.vue";
 import AddSpaceFlightView from "@/views/AddSpaceFlightView.vue";
+import AddMissionView from "@/views/AddMissionView.vue";
+import OrderView from "@/views/OrderView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -50,6 +52,16 @@ const router = createRouter({
       path: '/search',
       name: 'search',
       component: SearchView,
+    },
+    {
+      path: '/add-mission/:id?',
+      name: 'add-mission',
+      component: AddMissionView,
+    },
+    {
+      path: '/order',
+      name: 'order',
+      component: OrderView,
     },
   ],
 })
